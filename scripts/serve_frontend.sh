@@ -20,7 +20,7 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 PORT=${1:-8000}
 
 echo -e "${BLUE}================================${NC}"
-echo -e "${BLUE}MoMo SMS Dashboard Server${NC}"
+echo -e "${BLUE}MoMo SMS Dashboard Server - Code Crafters${NC}"
 echo -e "${BLUE}================================${NC}"
 
 # Check if Python is available

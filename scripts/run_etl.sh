@@ -17,7 +17,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo -e "${BLUE}================================${NC}"
-echo -e "${BLUE}MoMo SMS ETL Pipeline Runner${NC}"
+echo -e "${BLUE}MoMo SMS ETL Pipeline Runner - Code Crafters${NC}"
 echo -e "${BLUE}================================${NC}"
 
 # Check if Python is available

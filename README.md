@@ -147,6 +147,8 @@ Key configuration options in `etl/config.py`:
 - [MICHAELLA KAMIKAZI KARANGWA]
 - [RACHEL AKELLO]
 
+**Team Name: Code Crafters**
+
 ## Contributing
 1. Create a feature branch
 2. Make your changes
@@ -172,4 +174,4 @@ Key configuration options in `etl/config.py`:
 
 ---
 
-**Built with ❤️ by Group 2 for the MoMo SMS Analytics Platform**
+**Built with ❤️ by Code Crafters for the MoMo SMS Analytics Platform**

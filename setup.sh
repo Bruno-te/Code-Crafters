@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}================================${NC}"
-echo -e "${BLUE}MoMo SMS Project Setup${NC}"
+echo -e "${BLUE}MoMo SMS Project Setup - Code Crafters${NC}"
 echo -e "${BLUE}================================${NC}"
 
 # Check if Python is available
