@@ -169,9 +169,6 @@ Key configuration options in `etl/config.py`:
 - Data export to multiple formats
 - Integration with external systems
 
-## License
-[Your License Here]
-
 ---
 
 **Built with ❤️ by Code Crafters for the MoMo SMS Analytics Platform**
