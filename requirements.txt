@@ -1,0 +1,18 @@
+# Core dependencies
+lxml>=4.9.0
+python-dateutil>=2.8.2
+
+# Optional FastAPI dependencies (bonus feature)
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.5.0
+
+# Database
+sqlite3  # Built-in with Python
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Logging
+structlog>=23.2.0

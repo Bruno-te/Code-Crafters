@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoMo SMS Data Analytics Dashboard</title>
+    <link rel="stylesheet" href="web/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>MoMo SMS Data Analytics Dashboard</h1>
+            <p class="subtitle">Real-time transaction analysis and insights</p>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="transactions">Transactions</button>
+            <button class="tab-btn" data-tab="analytics">Analytics</button>
+            <button class="tab-btn" data-tab="reports">Reports</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Transactions</h3>
+                        <p class="stat-number" id="total-transactions">0</p>
+                        <p class="stat-change positive">+12.5% from last month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Amount</h3>
+                        <p class="stat-number" id="total-amount">$0</p>
+                        <p class="stat-change positive">+8.3% from last month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Success Rate</h3>
+                        <p class="stat-number" id="success-rate">0%</p>
+                        <p class="stat-change positive">+2.1% from last month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Users</h3>
+                        <p class="stat-number" id="active-users">0</p>
+                        <p class="stat-change negative">-1.2% from last month</p>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>Transaction Volume Over Time</h3>
+                        <canvas id="volume-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Transaction Categories Distribution</h3>
+                        <canvas id="category-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transactions Tab -->
+            <div id="transactions" class="tab-content">
+                <div class="filters">
+                    <input type="text" id="search-transactions" placeholder="Search transactions...">
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="payment">Payment</option>
+                        <option value="transfer">Transfer</option>
+                        <option value="withdrawal">Withdrawal</option>
+                        <option value="deposit">Deposit</option>
+                    </select>
+                    <input type="date" id="date-filter">
+                </div>
+                <div class="table-container">
+                    <table id="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactions-tbody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="analytics" class="tab-content">
+                <div class="analytics-grid">
+                    <div class="chart-container">
+                        <h3>Amount Distribution by Category</h3>
+                        <canvas id="amount-distribution-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Hourly Transaction Pattern</h3>
+                        <canvas id="hourly-pattern-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Geographic Distribution</h3>
+                        <canvas id="geo-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Transaction Success Rate Trend</h3>
+                        <canvas id="success-trend-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reports" class="tab-content">
+                <div class="reports-section">
+                    <h3>Generate Reports</h3>
+                    <div class="report-controls">
+                        <select id="report-type">
+                            <option value="daily">Daily Summary</option>
+                            <option value="weekly">Weekly Summary</option>
+                            <option value="monthly">Monthly Summary</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                        <input type="date" id="report-start-date">
+                        <input type="date" id="report-end-date">
+                        <button id="generate-report" class="btn-primary">Generate Report</button>
+                    </div>
+                    <div id="report-output" class="report-output">
+                        <!-- Report content will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 MoMo SMS Analytics Platform. Built with ❤️ by Group 2.</p>
+        </footer>
+    </div>
+
+    <script src="web/chart_handler.js"></script>
+</body>
+</html>
