@@ -143,10 +143,9 @@ Key configuration options in `etl/config.py`:
 - Database audit trail: Built into SQLite
 
 ## Team Members
-- [ISHIMWE BRUNO]
-- [MICHAELLA KAMIKAZI KARANGWA]
-- [RACHEL AKELLO]
-
+- ISHIMWE BRUNO(i.bruno@alustudent.com)
+- MICHAELLA KAMIKAZI KARANGWA(m.kamikazi@alustudent.com)
+- RACHEAL AKELLO(r.akello@alustudent.com)
 **Team Name: Code Crafters**
 
 ## Contributing
