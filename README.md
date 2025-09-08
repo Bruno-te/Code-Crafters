@@ -21,11 +21,13 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 - **Frontend**: Interactive dashboard with charts, tables, and filtering
 
 ## Scrum Board
-**Project Management**: Use your preferred tool (GitHub Projects, Trello, Jira, or Miro)
-- **To Do**: Repository setup, architecture design, ETL development
-- **In Progress**: Current sprint tasks
-- **Done**: Completed features and milestones
+**Project Management**: Our preferred tool is GitHub Projects
 
+Tasks     To Do                     In Progress              Done
+          Repository                Current split            Completed features
+          setup, Architecture       tasks                    and milestones
+          design, ETL Development
+  
 ## Features
 - XML data parsing and validation
 - Data cleaning and normalization
