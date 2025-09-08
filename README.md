@@ -103,7 +103,7 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
    ./scripts/serve_frontend.sh
    ```
 
-3. **Access Dashboard**: Open http://localhost:8000 in your browser
+3. **Access Dashboard**: Open http://localhost:8000 or  https://smart-lies-tickle.loca.ltin your browser
 
 ### Alternative: Manual ETL Run
 ```bash
