@@ -16,8 +16,9 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-# Default port
+# Default port and host
 PORT=${1:-8000}
+HOST=${2:-0.0.0.0}
 
 echo -e "${BLUE}================================${NC}"
 echo -e "${BLUE}MoMo SMS Dashboard Server - Code Crafters${NC}"
@@ -48,7 +49,8 @@ cd "$PROJECT_DIR"
 echo -e "${BLUE}Starting dashboard server...${NC}"
 echo -e "${BLUE}Project directory: $PROJECT_DIR${NC}"
 echo -e "${BLUE}Port: $PORT${NC}"
-echo -e "${BLUE}Dashboard URL: http://localhost:$PORT${NC}"
+echo -e "${BLUE}Bind address: $HOST${NC}"
+echo -e "${BLUE}Dashboard URL: http://$HOST:$PORT${NC}"
 echo ""
 echo -e "${YELLOW}Press Ctrl+C to stop the server${NC}"
 echo ""
@@ -68,4 +70,4 @@ echo -e "${GREEN}Dashboard server started successfully!${NC}"
 echo -e "${GREEN}Open your browser and navigate to: http://localhost:$PORT${NC}"
 echo ""
 
-python3 -m http.server "$PORT" --bind 127.0.0.1
+python3 -m http.server "$PORT" --bind "$HOST"
