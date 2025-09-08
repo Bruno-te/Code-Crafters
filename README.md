@@ -151,10 +151,9 @@ Key configuration options in `etl/config.py`:
 **Team Name: Code Crafters**
 
 ## Contributing
-1. Create a feature branch
-2. Make your changes
-3. Run tests: `python -m unittest discover tests`
-4. Submit a pull request
+1. Bruno Created a feature branch
+2. Racheal Run tests: `python -m unittest discover tests`
+3. Michaella Submitted a pull request
 
 ## Troubleshooting
 - **XML parsing errors**: Check XML format and structure
