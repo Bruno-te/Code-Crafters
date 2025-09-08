@@ -23,10 +23,10 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 ## Scrum Board
 **Project Management**: Our preferred tool is GitHub Projects
 
-Tasks     To Do                     In Progress              Done
-          Repository                Current split            Completed features
-          setup, Architecture       tasks                    and milestones
-          design, ETL Development
+**Project Management**: Our preferred tool GitHub Projects
+- **To Do**: Repository setup, architecture design, ETL development
+- **In Progress**: Current sprint tasks
+- **Done**: Completed features and milestones
   
 ## Features
 - XML data parsing and validation
