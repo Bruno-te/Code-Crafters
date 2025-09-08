@@ -105,7 +105,7 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
    ./scripts/serve_frontend.sh
    ```
 
-3. **Access Dashboard**: Open http://127.0.0.1:5500/ or  https://smart-lies-tickle.loca.ltin your browser
+3. **Access Dashboard**: Open http://127.0.0.1:5500/ your browser
 
 ### Alternative: Manual ETL Run
 ```bash
