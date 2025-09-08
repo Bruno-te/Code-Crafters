@@ -91,21 +91,21 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
    ```bash
    pip install -r requirements.txt
    ```
-3. Copy `.env.example` to `.env` and configure settings (optional)
-4. Place your `momo.xml` file in `data/raw/` (or use the sample created by the script)
+3. Copied `.env.example` to `.env` and configured settings
+4. Placed `momo.xml` file in `data/raw/`
 
 ### Running the Application
-1. **Process Data**: Run the ETL pipeline
+1. **Process Data**: Runed the ETL pipeline
    ```bash
    ./scripts/run_etl.sh
    ```
 
-2. **Start Frontend**: Serve the dashboard
+2. **Start Frontend**: Served the dashboard
    ```bash
    ./scripts/serve_frontend.sh
    ```
 
-3. **Access Dashboard**: Open http://127.0.0.1:5500/ your browser
+3. **Access Dashboard**: Open http://127.0.0.1:5500/ in our browser
 
 ### Alternative: Manual ETL Run
 ```bash
@@ -113,13 +113,13 @@ python etl/run.py --xml data/raw/momo.xml
 ```
 
 ## Development Workflow
-- Use Agile/Scrum practices for development
-- Run tests before committing: `python -m unittest discover tests`
-- Check logs in `data/logs/etl.log` for debugging
-- Follow the established project structure
+- Used Agile/Scrum practices for development
+- Runed tests before committing: `python -m unittest discover tests`
+- Checked logs in `data/logs/etl.log` for debugging
+- Followed the established project structure
 
 ## Testing
-Run the test suite:
+Runed the test suite:
 ```bash
 python -m unittest discover tests
 ```
@@ -156,10 +156,10 @@ Key configuration options in `etl/config.py`:
 3. Michaella Submitted a pull request
 
 ## Troubleshooting
-- **XML parsing errors**: Check XML format and structure
-- **Database errors**: Verify file permissions and disk space
-- **Frontend issues**: Check browser console and network tab
-- **Performance issues**: Review database indexes and query optimization
+- **XML parsing errors**: Checked XML format and structure
+- **Database errors**: Verified file permissions and disk space
+- **Frontend issues**: Checked browser console and network tab
+- **Performance issues**: Reviewed database indexes and query optimization
 
 ## Future Enhancements
 - REST API with FastAPI
