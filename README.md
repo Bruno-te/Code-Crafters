@@ -151,9 +151,9 @@ Key configuration options in `etl/config.py`:
 **Team Name: Code Crafters**
 
 ## Contributing
-1. Bruno Created a feature branch
-2. Racheal Run tests: `python -m unittest discover tests`
-3. Michaella Submitted a pull request
+1. Bruno Created a feature branch and worked on backend
+2. Racheal Runed tests and worked on frontend
+3. Michaella worked on System Architecture and will Submit a pull request
 
 ## Troubleshooting
 - **XML parsing errors**: Checked XML format and structure
