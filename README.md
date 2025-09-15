@@ -102,10 +102,12 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 
 2. **Start Frontend**: Serve the dashboard
    ```bash
-   ./scripts/serve_frontend.sh
+   ./scripts/serve_frontend.sh 8000 0.0.0.0
    ```
 
-3. **Access Dashboard**: Open http://127.0.0.1:5500/ your browser
+3. **Access Dashboard**: Open http://localhost:8000 in your browser
+   - To allow others on my LAN: `http://my_LAN_IP:8000`
+   - For a temporary public link: `npx localtunnel --port 8000`
 
 ### Alternative: Manual ETL Run
 ```bash
@@ -160,6 +162,81 @@ Key configuration options in `etl/config.py`:
 - **XML parsing errors**: Check XML format and structure
 - **Database errors**: Verify file permissions and disk space
 - **Frontend issues**: Check browser console and network tab
+  - Verify the server is running on the expected port
+  - Try `curl -I http://127.0.0.1:8000`
+
+## Documentation
+### Database Design
+- ERD: see `docs/ERD.md`
+- MySQL schema and sample data: `database/database_setup.sql`
+- JSON examples and mapping: `examples/json_examples.json`
+
+### ERD (inline)
+```mermaid
+erDiagram
+    USERS ||--o{ TRANSACTIONS : initiates
+    USERS ||--o{ TRANSACTIONS : receives
+    TRANSACTION_CATEGORIES ||--o{ TRANSACTIONS : categorizes
+    TRANSACTIONS ||--o{ TRANSACTION_TAGS : has
+    TAGS ||--o{ TRANSACTION_TAGS : labels
+    SYSTEM_LOGS }o--|| TRANSACTIONS : references
+
+    USERS {
+        INT id PK
+        VARCHAR phone UNIQUE
+        VARCHAR full_name
+        VARCHAR email
+        DATETIME created_at
+    }
+
+    TRANSACTION_CATEGORIES {
+        INT id PK
+        VARCHAR name UNIQUE
+        VARCHAR description
+        DATETIME created_at
+    }
+
+    TRANSACTIONS {
+        BIGINT id PK
+        VARCHAR external_ref UNIQUE
+        DATETIME occurred_at
+        DECIMAL(12,2) amount
+        VARCHAR currency
+        ENUM status
+        INT sender_id FK
+        INT receiver_id FK
+        INT category_id FK
+        VARCHAR channel
+        VARCHAR location
+        TEXT message_excerpt
+        DATETIME created_at
+    }
+
+    TAGS {
+        INT id PK
+        VARCHAR name UNIQUE
+        VARCHAR description
+        DATETIME created_at
+    }
+
+    TRANSACTION_TAGS {
+        BIGINT transaction_id FK
+        INT tag_id FK
+        DATETIME created_at
+        PK transaction_id, tag_id
+    }
+
+    SYSTEM_LOGS {
+        BIGINT id PK
+        VARCHAR level
+        VARCHAR source
+        TEXT message
+        DATETIME created_at
+        BIGINT transaction_id FK
+    }
+```
+
+See also the editable Draw.io file: `docs/ERD.drawio`.
 - **Performance issues**: Review database indexes and query optimization
 
 ## Future Enhancements
