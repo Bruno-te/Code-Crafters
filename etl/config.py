@@ -27,11 +27,24 @@ LOG_LEVEL = "INFO"
 DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
 
 # Transaction Categories
+# Expanded with MTN Rwanda phrasing seen in SMS bodies
 TRANSACTION_CATEGORIES = {
-    "payment": ["payment", "pay", "bill", "utility"],
-    "transfer": ["transfer", "send", "money", "cash"],
-    "withdrawal": ["withdraw", "withdrawal", "atm", "cashout"],
-    "deposit": ["deposit", "topup", "recharge", "add"]
+    "payment": [
+        "payment", "pay", "bill", "utility", "cash power", "mtn cash power",
+        "has been completed", "completed", "token", "merchant", "direct payment"
+    ],
+    "transfer": [
+        "transfer", "transferred", "send", "money", "cash", "p2p", "to ", "from ",
+        "you have received", "received"
+    ],
+    "withdrawal": [
+        "withdraw", "withdrawal", "atm", "cashout", "withdrawn", "collect your money in cash",
+        "cash out", "cash-out"
+    ],
+    "deposit": [
+        "deposit", "topup", "recharge", "add", "added to your mobile money account", "cash deposit",
+        "bank deposit", "has been added"
+    ]
 }
 
 # Amount thresholds for categorization
@@ -41,11 +54,15 @@ AMOUNT_THRESHOLDS = {
     "large": 10000
 }
 
-# Phone number patterns (Ghana)
+# Country dialing configuration
+DEFAULT_COUNTRY = "RW"
+COUNTRY_DIAL_CODE = "+250"
+
+# Phone number patterns (Rwanda)
 PHONE_PATTERNS = [
-    r"\+233\d{9}",  # +233XXXXXXXXX
+    r"\+250\d{9}",  # +250XXXXXXXXX
     r"0\d{9}",      # 0XXXXXXXXX
-    r"233\d{9}"     # 233XXXXXXXXX
+    r"250\d{9}"     # 250XXXXXXXXX
 ]
 
 # Date formats to try

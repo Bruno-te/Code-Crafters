@@ -78,6 +78,10 @@ class MoMoXMLParser:
             try:
                 transaction = self._parse_transaction_element(elem, i)
                 if transaction:
+                    # Filter out OTP/auth messages commonly found in MoMo SMS exports
+                    message_lower = (transaction.get('message') or '').lower()
+                    if self._is_otp_message(message_lower):
+                        continue
                     transactions.append(transaction)
             except Exception as e:
                 error_msg = f"Error parsing transaction {i}: {e}"
@@ -86,6 +90,16 @@ class MoMoXMLParser:
                 continue
         
         return transactions
+
+    def _is_otp_message(self, message_lower: str) -> bool:
+        """Detect OTP/verification messages to exclude from transactions."""
+        if not message_lower:
+            return False
+        otp_keywords = [
+            'one-time password', 'otp', 'does not recommend that you share',
+            'verification code', 'do not share', 'be vigilant'
+        ]
+        return any(keyword in message_lower for keyword in otp_keywords)
     
     def _parse_transaction_element(self, elem: ET.Element, index: int) -> Optional[Dict[str, Any]]:
         """Parse individual transaction element"""
