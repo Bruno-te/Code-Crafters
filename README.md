@@ -21,13 +21,11 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 - **Frontend**: Interactive dashboard with charts, tables, and filtering
 
 ## Scrum Board
-**Project Management**: Our preferred tool is GitHub Projects
+**Project Management**: Our preferred tool GitHub Projects
+- **To Do**: Repository setup, architecture design, ETL development
+- **In Progress**: Current sprint tasks
+- **Done**: Completed features and milestones
 
-Tasks     To Do                     In Progress              Done
-          Repository                Current split            Completed features
-          setup, Architecture       tasks                    and milestones
-          design, ETL Development
-  
 ## Features
 - XML data parsing and validation
 - Data cleaning and normalization
@@ -105,7 +103,7 @@ Tasks     To Do                     In Progress              Done
    ./scripts/serve_frontend.sh
    ```
 
-3. **Access Dashboard**: Open http://localhost:8000 or  https://smart-lies-tickle.loca.ltin your browser
+3. **Access Dashboard**: Open http://localhost:8000 or http://127.0.0.1:5500/ in your browser
 
 ### Alternative: Manual ETL Run
 ```bash
