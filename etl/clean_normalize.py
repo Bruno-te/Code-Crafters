@@ -8,7 +8,7 @@ from datetime import datetime
 from dateutil import parser as date_parser
 import unicodedata
 
-from .config import DATE_FORMATS, PHONE_PATTERNS, ETL_LOG_PATH
+from .config import DATE_FORMATS, PHONE_PATTERNS, ETL_LOG_PATH, COUNTRY_DIAL_CODE
 
 # Configure logging
 logging.basicConfig(
@@ -163,7 +163,7 @@ class DataCleaner:
             return None
     
     def _normalize_phone(self, phone_value: Any) -> Optional[str]:
-        """Normalize phone numbers to Ghana format"""
+        """Normalize phone numbers using configured country dial code"""
         if not phone_value:
             return None
         
@@ -173,17 +173,17 @@ class DataCleaner:
             # Remove all non-digit characters except +
             cleaned = re.sub(r'[^\d+]', '', phone_str)
             
-            # Normalize to Ghana format
-            if cleaned.startswith('+233'):
+            # Normalize to configured country format
+            if cleaned.startswith(COUNTRY_DIAL_CODE):
                 return cleaned
-            elif cleaned.startswith('233'):
+            elif cleaned.startswith(COUNTRY_DIAL_CODE.lstrip('+')):
                 return '+' + cleaned
             elif cleaned.startswith('0'):
-                return '+233' + cleaned[1:]
+                return COUNTRY_DIAL_CODE + cleaned[1:]
             elif len(cleaned) == 9:
-                return '+233' + cleaned
+                return COUNTRY_DIAL_CODE + cleaned
             elif len(cleaned) == 10 and cleaned.startswith('0'):
-                return '+233' + cleaned[1:]
+                return COUNTRY_DIAL_CODE + cleaned[1:]
             else:
                 logger.warning(f"Unrecognized phone format: {phone_value}")
                 return None

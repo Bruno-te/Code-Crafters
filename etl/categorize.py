@@ -191,57 +191,17 @@ class TransactionCategorizer:
         if not phone:
             return 'unknown'
         
-        # Ghana phone number patterns
-        # This is a simplified version - in production you'd use a proper phone number library
-        if phone.startswith('+233'):
-            # Extract area code (first 2 digits after 233)
-            area_code = phone[4:6]
-            
-            # Map area codes to regions (simplified)
-            region_mapping = {
-                '20': 'Greater Accra',
-                '21': 'Greater Accra',
-                '22': 'Greater Accra',
-                '23': 'Greater Accra',
-                '24': 'Greater Accra',
-                '25': 'Greater Accra',
-                '26': 'Greater Accra',
-                '27': 'Greater Accra',
-                '28': 'Greater Accra',
-                '29': 'Greater Accra',
-                '30': 'Ashanti',
-                '31': 'Ashanti',
-                '32': 'Ashanti',
-                '33': 'Ashanti',
-                '34': 'Ashanti',
-                '35': 'Ashanti',
-                '36': 'Ashanti',
-                '37': 'Ashanti',
-                '38': 'Ashanti',
-                '39': 'Ashanti',
-                '40': 'Western',
-                '41': 'Western',
-                '42': 'Western',
-                '43': 'Western',
-                '44': 'Western',
-                '45': 'Western',
-                '46': 'Western',
-                '47': 'Western',
-                '48': 'Western',
-                '49': 'Western',
-                '50': 'Central',
-                '51': 'Central',
-                '52': 'Central',
-                '53': 'Central',
-                '54': 'Central',
-                '55': 'Central',
-                '56': 'Central',
-                '57': 'Central',
-                '58': 'Central',
-                '59': 'Central'
+        # Rwanda phone numbers
+        if phone.startswith('+250'):
+            # After +250, next digit often indicates operator; region mapping is less meaningful
+            operator_code = phone[4:6]
+            operator_mapping = {
+                '78': 'MTN Rwanda',
+                '79': 'MTN Rwanda',
+                '72': 'Airtel Rwanda',
+                '73': 'Airtel Rwanda'
             }
-            
-            return region_mapping.get(area_code, 'Other')
+            return operator_mapping.get(operator_code, 'Rwanda')
         
         return 'unknown'
     

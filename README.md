@@ -26,6 +26,13 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 - **In Progress**: Current sprint tasks
 - **Done**: Completed features and milestones
 
+**Project Management**: Our preferred tool is GitHub Projects
+
+**Project Management**: Our preferred tool GitHub Projects
+- **To Do**: Repository setup, architecture design, ETL development
+- **In Progress**: Current sprint tasks
+- **Done**: Completed features and milestones
+  
 ## Features
 - XML data parsing and validation
 - Data cleaning and normalization
@@ -89,21 +96,24 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
    ```bash
    pip install -r requirements.txt
    ```
-3. Copy `.env.example` to `.env` and configure settings (optional)
-4. Place your `momo.xml` file in `data/raw/` (or use the sample created by the script)
+3. Copied `.env.example` to `.env` and configured settings
+4. Placed `momo.xml` file in `data/raw/`
 
 ### Running the Application
-1. **Process Data**: Run the ETL pipeline
+1. **Process Data**: Runed the ETL pipeline
    ```bash
    ./scripts/run_etl.sh
    ```
 
-2. **Start Frontend**: Serve the dashboard
+2. **Start Frontend**: Served the dashboard
    ```bash
-   ./scripts/serve_frontend.sh
+   ./scripts/serve_frontend.sh 8000 0.0.0.0
    ```
 
 3. **Access Dashboard**: Open http://localhost:8000 or http://127.0.0.1:5500/ in your browser
+3. **Access Dashboard**: Open http://localhost:8000 in your browser
+   - To allow others on my LAN: `http://my_LAN_IP:8000`
+   - For a temporary public link: `npx localtunnel --port 8000`
 
 ### Alternative: Manual ETL Run
 ```bash
@@ -111,13 +121,13 @@ python etl/run.py --xml data/raw/momo.xml
 ```
 
 ## Development Workflow
-- Use Agile/Scrum practices for development
-- Run tests before committing: `python -m unittest discover tests`
-- Check logs in `data/logs/etl.log` for debugging
-- Follow the established project structure
+- Used Agile/Scrum practices for development
+- Runed tests before committing: `python -m unittest discover tests`
+- Checked logs in `data/logs/etl.log` for debugging
+- Followed the established project structure
 
 ## Testing
-Run the test suite:
+Runed the test suite:
 ```bash
 python -m unittest discover tests
 ```
@@ -149,15 +159,89 @@ Key configuration options in `etl/config.py`:
 **Team Name: Code Crafters**
 
 ## Contributing
-1. Create a feature branch
-2. Make your changes
-3. Run tests: `python -m unittest discover tests`
-4. Submit a pull request
+1. Bruno Created a feature branch and worked on backend
+2. Racheal Runed tests and worked on frontend
+3. Michaella worked on System Architecture and will Submit a pull request
 
 ## Troubleshooting
 - **XML parsing errors**: Check XML format and structure
 - **Database errors**: Verify file permissions and disk space
 - **Frontend issues**: Check browser console and network tab
+  - Verify the server is running on the expected port
+  - Try `curl -I http://127.0.0.1:8000`
+
+## Documentation
+### Database Design
+- ERD: see `docs/ERD.md`
+- MySQL schema and sample data: `database/database_setup.sql`
+- JSON examples and mapping: `examples/json_examples.json`
+
+### ERD (inline)
+```mermaid
+erDiagram
+    USERS ||--o{ TRANSACTIONS : initiates
+    USERS ||--o{ TRANSACTIONS : receives
+    TRANSACTION_CATEGORIES ||--o{ TRANSACTIONS : categorizes
+    TRANSACTIONS ||--o{ TRANSACTION_TAGS : has
+    TAGS ||--o{ TRANSACTION_TAGS : labels
+    SYSTEM_LOGS }o--|| TRANSACTIONS : references
+
+    USERS {
+        INT id PK
+        VARCHAR phone UNIQUE
+        VARCHAR full_name
+        VARCHAR email
+        DATETIME created_at
+    }
+
+    TRANSACTION_CATEGORIES {
+        INT id PK
+        VARCHAR name UNIQUE
+        VARCHAR description
+        DATETIME created_at
+    }
+
+    TRANSACTIONS {
+        BIGINT id PK
+        VARCHAR external_ref UNIQUE
+        DATETIME occurred_at
+        DECIMAL(12,2) amount
+        VARCHAR currency
+        ENUM status
+        INT sender_id FK
+        INT receiver_id FK
+        INT category_id FK
+        VARCHAR channel
+        VARCHAR location
+        TEXT message_excerpt
+        DATETIME created_at
+    }
+
+    TAGS {
+        INT id PK
+        VARCHAR name UNIQUE
+        VARCHAR description
+        DATETIME created_at
+    }
+
+    TRANSACTION_TAGS {
+        BIGINT transaction_id FK
+        INT tag_id FK
+        DATETIME created_at
+        PK transaction_id, tag_id
+    }
+
+    SYSTEM_LOGS {
+        BIGINT id PK
+        VARCHAR level
+        VARCHAR source
+        TEXT message
+        DATETIME created_at
+        BIGINT transaction_id FK
+    }
+```
+
+See also the editable Draw.io file: `docs/ERD.drawio`.
 - **Performance issues**: Review database indexes and query optimization
 
 ## Future Enhancements
