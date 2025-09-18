@@ -26,12 +26,9 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 - **In Progress**: Current sprint tasks
 - **Done**: Completed features and milestones
 
-**Project Management**: Our preferred tool is GitHub Projects
+This is the link to our scrum board
+https://app.clickup.com/90121048007/v/s/90125082789 
 
-**Project Management**: Our preferred tool GitHub Projects
-- **To Do**: Repository setup, architecture design, ETL development
-- **In Progress**: Current sprint tasks
-- **Done**: Completed features and milestones
   
 ## Features
 - XML data parsing and validation
@@ -159,16 +156,22 @@ Key configuration options in `etl/config.py`:
 **Team Name: Code Crafters**
 
 ## Contributing
-1. Bruno Created a feature branch and worked on backend
-2. Racheal Runed tests and worked on frontend
-3. Michaella worked on System Architecture and will Submit a pull request
+1. Bruno:
+   Created a feature branch and worked on backend 
+   worked on SQL script in a /database folder
+   and updated the README.md file
+2. Racheal:
+   Runed tests and worked on frontend.
+   worked on json data modeling
+3. Michaella:
+   worked on System Architecture and will Submit a pull request 
+   worked on ERD and documentation.
 
 ## Troubleshooting
-- **XML parsing errors**: Check XML format and structure
-- **Database errors**: Verify file permissions and disk space
-- **Frontend issues**: Check browser console and network tab
-  - Verify the server is running on the expected port
-  - Try `curl -I http://127.0.0.1:8000`
+- **XML parsing errors**: Checked XML format and structure
+- **Database errors**: Verified file permissions and disk space
+- **Frontend issues**: Checked browser console and network tab
+  
 
 ## Documentation
 ### Database Design
@@ -241,8 +244,8 @@ erDiagram
     }
 ```
 
-See also the editable Draw.io file: `docs/ERD.drawio`.
-- **Performance issues**: Review database indexes and query optimization
+The editable Draw.io file: `docs/ERD.drawio`.
+- **Performance issues**: Reviewied database indexes and query optimization
 
 ## Future Enhancements
 - REST API with FastAPI
