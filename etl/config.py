@@ -13,7 +13,7 @@ LOGS_DIR = DATA_DIR / "logs"
 DEAD_LETTER_DIR = LOGS_DIR / "dead_letter"
 
 # File paths
-XML_INPUT_PATH = RAW_DIR / "momo.xml"
+XML_INPUT_PATH = RAW_DIR / "modified_sms_v2.xml"
 DASHBOARD_JSON_PATH = PROCESSED_DIR / "dashboard.json"
 DATABASE_PATH = DATA_DIR / "db.sqlite3"
 ETL_LOG_PATH = LOGS_DIR / "etl.log"
