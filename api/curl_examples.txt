@@ -1,0 +1,43 @@
+# MoMo SMS Transaction API - Curl Examples
+# Authentication: username=admin, password=password123
+
+# 1. Get all transactions
+curl -X GET "http://localhost:8000/transactions" \
+  -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM="
+
+# 2. Get a specific transaction (replace TXN000001 with actual ID)
+curl -X GET "http://localhost:8000/transactions/TXN000001" \
+  -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM="
+
+# 3. Create a new transaction
+curl -X POST "http://localhost:8000/transactions" \
+  -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 100.00,
+    "date": "2024-01-18T16:00:00Z",
+    "message": "Test transaction created via curl",
+    "type": "credit",
+    "status": "success",
+    "sender": "+233241234599",
+    "recipient": "+233241234600"
+  }'
+
+# 4. Update a transaction (replace TXN000001 with actual ID)
+curl -X PUT "http://localhost:8000/transactions/TXN000001" \
+  -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 125.00,
+    "message": "Updated transaction message",
+    "status": "completed"
+  }'
+
+# 5. Delete a transaction (replace TXN000001 with actual ID)
+curl -X DELETE "http://localhost:8000/transactions/TXN000001" \
+  -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM="
+
+# 6. Test unauthorized access (should return 401)
+curl -X GET "http://localhost:8000/transactions"
+
+# Base64 encoded credentials: admin:password123 = YWRtaW46cGFzc3dvcmQxMjM=

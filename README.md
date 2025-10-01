@@ -21,6 +21,11 @@ XML Input → XML Parser → Data Cleaner → Categorizer → SQLite DB → Dash
 - **Frontend**: Interactive dashboard with charts, tables, and filtering
 
 ## Scrum Board
+**Project Management**: Our preferred tool GitHub Projects
+- **To Do**: Repository setup, architecture design, ETL development
+- **In Progress**: Current sprint tasks
+- **Done**: Completed features and milestones
+
 This is the link to our scrum board
 https://app.clickup.com/90121048007/v/s/90125082789 
 
@@ -102,6 +107,7 @@ https://app.clickup.com/90121048007/v/s/90125082789
    ./scripts/serve_frontend.sh 8000 0.0.0.0
    ```
 
+3. **Access Dashboard**: Open http://localhost:8000 or http://127.0.0.1:5500/ in your browser
 3. **Access Dashboard**: Open http://localhost:8000 in your browser
    - To allow others on my LAN: `http://my_LAN_IP:8000`
    - For a temporary public link: `npx localtunnel --port 8000`

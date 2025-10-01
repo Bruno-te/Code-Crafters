@@ -3,6 +3,7 @@ XML parsing module for MoMo SMS data
 """
 import xml.etree.ElementTree as ET
 import logging
+import json
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 import re
@@ -198,6 +199,12 @@ class MoMoXMLParser:
         
         return True
     
+    def save_to_json(self, output_path: Path) -> None:
+        """Save parsed transactions to JSON file"""
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(self.parsed_data, f, indent=4, ensure_ascii=False)
+        logger.info(f"Saved {len(self.parsed_data)} records to {output_path}")
+    
     def get_errors(self) -> List[str]:
         """Get list of parsing errors"""
         return self.errors
@@ -218,7 +225,13 @@ def parse_momo_xml(xml_path: Optional[Path] = None) -> List[Dict[str, Any]]:
 if __name__ == "__main__":
     # Test parsing
     try:
-        transactions = parse_momo_xml()
+        parser = MoMoXMLParser()
+        transactions = parser.parse_file()
+
+        #save parsed data to JSON for API use
+        output_path = Path("data/processed/transactions.json")
+        parser.save_to_json(output_path)
+        
         print(f"Parsed {len(transactions)} transactions")
         if transactions:
             print("Sample transaction:", transactions[0])
