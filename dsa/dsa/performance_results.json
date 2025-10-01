@@ -1,0 +1,32 @@
+{
+  "total_transactions": 50,
+  "searches_performed": 20,
+  "algorithms": {
+    "linear_search": {
+      "total_time": 6.7e-05,
+      "average_time": 3e-06,
+      "successful_searches": 20,
+      "time_complexity": "O(n)",
+      "space_complexity": "O(1)"
+    },
+    "dictionary_lookup": {
+      "total_time": 1.5e-05,
+      "average_time": 1e-06,
+      "successful_searches": 20,
+      "time_complexity": "O(1)",
+      "space_complexity": "O(n)"
+    },
+    "binary_search": {
+      "total_time": 0.000206,
+      "average_time": 1e-05,
+      "successful_searches": 20,
+      "time_complexity": "O(log n)",
+      "space_complexity": "O(1)"
+    }
+  },
+  "performance_improvement": {
+    "dictionary_vs_linear": "4.53x faster",
+    "binary_vs_linear": "0.32x faster",
+    "dictionary_vs_binary": "13.95x faster"
+  }
+}
